@@ -50,4 +50,6 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 ## 📧 Contact
 
-For any inquiries, please contact shambhlo2006@gmail.com
+For any inquiries, please contact 
+- [Parthiv Joshi](mailto:shambhlo2006@gmail.com) | [LinkedIn](https://www.linkedin.com/in/parthiv-joshi-8a7766281/)
+- [Mihir Amin](mailto:mihiramin99@gmail.com) | [LinkedIn](www.linkedin.com/in/mihir-amin-49033a2ab)
