@@ -31,6 +31,10 @@
    ```bash
    git clone https://github.com/MihirAmin2006/AITripPlanner.git
    ```
+2. ```bash
+   git clone https://github.com/Parthivjoshi29/WanderLust-AI.git
+   ```
+   
 2. **Open `index.html`** in your web browser.
 
 ## 🗺️ Usage
