@@ -1,44 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Travel Planner</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Travel Planner | Plan Your Perfect Trip</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-</head>
-<body>
-    <button id="themeToggle">
-        <i class="fas fa-moon"></i>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+  <body>
+    <button id="themeToggle" aria-label="Toggle dark mode">
+      <i class="fas fa-moon"></i>
     </button>
 
-    <div class="header">
-        <h2><i class="fas fa-globe-americas"></i> Instant AI Travel Planner</h2>
-    </div>
-    
-    <div class="input-container">
-        <input type="text" id="placeName" placeholder="Enter a city/state (e.g., Paris, Gujarat)" value="Paris">
-        <input type="number" id="numDays" placeholder="Days" value="3" min="1" max="10">
-        <button class="plan-button" onclick="updateMap(); generateItinerary();">
-            <i class="fas fa-route"></i> Plan Trip
-        </button>
-    </div>
+    <header class="header">
+      <div class="header-content">
+        <h1><i class="fas fa-globe-americas"></i> Wanderlust AI</h1>
+        <p class="tagline">Your AI-powered travel companion</p>
+        <div class="header-decoration"></div>
+      </div>
+    </header>
 
-    <div id="loading">
-        <i class="fas fa-compass fa-spin"></i>
-        Generating your perfect itinerary
-        <div class="loading-dots">
-            <span></span><span></span><span></span>
+    <main>
+      <section class="search-section">
+        <div class="input-container">
+          <div id="destinations-container">
+            <div class="destination-item">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="destination-input"
+                  placeholder=" "
+                  value="Paris"
+                />
+                <label for="destination-0"
+                  ><i class="fas fa-map-marker-alt"></i> Starting Point</label
+                >
+              </div>
+              <button class="remove-destination" style="display: none">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+
+          <button id="add-destination" class="secondary-button">
+            <i class="fas fa-plus"></i> Add Destination
+          </button>
+
+          <div class="input-group">
+            <input
+              type="number"
+              id="numDays"
+              placeholder=" "
+              value="7"
+              min="3"
+              max="30"
+            />
+            <label for="numDays"
+              ><i class="fas fa-calendar-alt"></i> Total Days</label
+            >
+          </div>
+
+          <div class="route-options">
+            <label class="route-option">
+              <input type="radio" name="routeType" value="optimal" checked />
+              <span><i class="fas fa-route"></i> Optimal Route</span>
+            </label>
+            <label class="route-option">
+              <input type="radio" name="routeType" value="sequential" />
+              <span><i class="fas fa-arrow-right"></i> Sequential</span>
+            </label>
+          </div>
+
+          <button class="plan-button" onclick="planMultiCityTrip();">
+            <span class="button-text"
+              ><i class="fas fa-route"></i> Plan Multi-City Adventure</span
+            >
+            <span class="button-icon"><i class="fas fa-paper-plane"></i></span>
+          </button>
         </div>
-    </div>
+      </section>
 
-    <div id="map"></div>
-    <div id="itinerary"></div>
+      <div id="loading">
+        <div class="loading-content">
+          <i class="fas fa-compass fa-spin"></i>
+          <p>Crafting your perfect itinerary</p>
+          <div class="loading-dots">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <section class="map-section">
+        <h2 class="section-title">
+          <i class="fas fa-map"></i> Your Travel Route
+        </h2>
+        <div id="map"></div>
+      </section>
+
+      <section class="itinerary-section">
+        <h2 class="section-title">
+          <i class="fas fa-list-alt"></i> Your Itinerary
+        </h2>
+        <div id="itinerary"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3><i class="fas fa-globe"></i> Wanderlust AI</h3>
+          <p>Plan your perfect trip with AI-powered recommendations</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="#" class="footer-link"><i class="fas fa-home"></i> Home</a>
+          <a href="#map" class="footer-link"><i class="fas fa-map"></i> Map</a>
+          <a href="#itinerary" class="footer-link"
+            ><i class="fas fa-route"></i> Itinerary</a
+          >
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Wanderlust AI. Made with <i class="fas fa-heart"></i></p>
+      </div>
+    </footer>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
