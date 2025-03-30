@@ -1,4 +1,4 @@
-const HUGGINGFACE_API_KEY = "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";
+const HUGGINGFACE_API_KEY = "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";
 
 let map, routeControl; // Updated global variables
 let destinations = []; // Array to store destination coordinates
