@@ -139,28 +139,18 @@ function initializeThemeToggle() {
     themeToggleBtn.addEventListener("click", function () {
       document.body.classList.toggle("dark-mode");
       updateThemeIcon(themeToggleBtn);
-
-      // Update map tiles for dark mode
-      if (document.body.classList.contains("dark-mode")) {
+      
+      // Remove the map tile layer update for dark mode
+      // Keep the light theme map tiles regardless of dark mode
+      if (map._layers[Object.keys(map._layers)[0]]._url !== 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png') {
         map.removeLayer(map._layers[Object.keys(map._layers)[0]]);
-        L.tileLayer(
-          "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
-          {
-            attribution: "©OpenStreetMap, ©CartoDB",
-            maxZoom: 19,
-          }
-        ).addTo(map);
-      } else {
-        map.removeLayer(map._layers[Object.keys(map._layers)[0]]);
-        L.tileLayer(
-          "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-          {
-            attribution: "©OpenStreetMap, ©CartoDB",
-            maxZoom: 19,
-          }
-        ).addTo(map);
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '©OpenStreetMap, ©CartoDB',
+            maxZoom: 19
+        }).addTo(map);
       }
     });
+    
     // Set initial icon state
     updateThemeIcon(themeToggleBtn);
   }
