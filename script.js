@@ -194,6 +194,12 @@ async function planMultiCityTrip() {
   const loadingText = document.getElementById("loading");
   loadingText.style.display = "flex";
 
+  // Remove any existing routing alternatives panel
+  const routingAlt = document.querySelector('.leaflet-routing-alt');
+  if (routingAlt) {
+    routingAlt.remove();
+  }
+
   // Clear previous data
   destinations = [];
   if (markers.length) {
@@ -274,8 +280,17 @@ async function planMultiCityTrip() {
     },
     createMarker: function () {
       return null;
-    }, // Don't create default markers
+    },
+    show: false,
+    addWaypoints: false,
+    showAlternatives: false, // Disable alternative routes
+    containerClassName: 'display-none' // Hide the routing container
   }).addTo(map);
+  
+  // Add CSS to hide the routing container
+  const style = document.createElement('style');
+  style.textContent = '.display-none { display: none !important; }';
+  document.head.appendChild(style);
 
   // Fit map to show all destinations
   const bounds = L.latLngBounds(routeWaypoints);
