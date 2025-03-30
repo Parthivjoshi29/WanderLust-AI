@@ -814,6 +814,26 @@ main {
   transform: translateY(-3px);
 }
 
+.remove-destination {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.remove-destination:hover {
+  background: rgba(253, 121, 168, 0.1);
+  color: #fd79a8;
+  transform: rotate(90deg);
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .header h1 {
@@ -878,26 +898,6 @@ main {
 
   .destination-item .input-group {
     flex: 1;
-  }
-
-  .remove-destination {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    color: var(--text-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all var(--transition-fast);
-  }
-
-  .remove-destination:hover {
-    background: rgba(253, 121, 168, 0.1);
-    color: #fd79a8;
-    transform: rotate(90deg);
   }
 
   /* Secondary button */
