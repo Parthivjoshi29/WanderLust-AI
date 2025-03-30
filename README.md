@@ -1,8 +1,8 @@
-# 🌍 AITripPlanner
+# 🌍 Wanderlust AI
 
 ## Overview
 
-**AITripPlanner** is an AI-powered travel planning application designed to help users plan their perfect trips. With features like multi-city itineraries, AI-generated recommendations, and an interactive map, AITripPlanner is your ultimate travel companion.
+**Wanderlust AI** is an AI-powered travel planning application designed to help users plan their perfect trips. With features like multi-city itineraries, AI-generated recommendations, and an interactive map, AITripPlanner is your ultimate travel companion.
 
 ## ✨ Features
 
@@ -47,10 +47,7 @@
 
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements or bug fixes.
 
-## 📜 License
-
-This project is licensed under the MIT License.
 
 ## 📧 Contact
 
-For any inquiries, please contact [your email].
+For any inquiries, please contact shambhlo2006@gmail.com
