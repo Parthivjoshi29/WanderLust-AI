@@ -597,9 +597,9 @@ main {
 }
 
 /* Footer Styles */
-.footer {
+/* .footer {
   background: var(--card-bg);
-  padding: 60px 0 20px;
+  padding: 40px 0 20px;
   border-top: 1px solid var(--card-border);
   position: relative;
 }
@@ -615,6 +615,11 @@ main {
   background-size: cover;
   transform: rotate(180deg);
   pointer-events: none;
+} */
+
+.footer{
+  background: var(--card-bg);
+  padding: 50px;
 }
 
 .footer-content {
